@@ -6,6 +6,11 @@ import axios from 'axios';
 import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 
+require("dotenv").config()
+const ProjectID = process.env.PROJECTID;
+const PrivateKey = process.env.PRIVATEKEY;
+
+
 const Chats = () => {
   const history = useHistory();
   const {user} = useAuth();
