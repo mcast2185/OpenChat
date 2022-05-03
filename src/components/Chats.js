@@ -7,19 +7,19 @@ import { auth } from '../firebase';
 import { useAuth } from '../contexts/AuthContext';
 
 require("dotenv").config()
-const ProjectID = process.env.PROJECTID;
-const PrivateKey = process.env.PRIVATEKEY;
+const ProjectID = process.env.PROJECT_ID;
+const PrivateKey = process.env.PRIVATE_KEY;
 
 
 const Chats = () => {
   const history = useHistory();
   const {user} = useAuth();
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
   const getFile = async (url) => {
     let response = await fetch(url);
     let data = await response.blob();
     
-    return new File([data], "userPhoto.jpg", {type: "image/jpeg"})
+    return new File([data], "userPhoto.jpg", {type: "image/jpeg"});
   }
   const handleLogout = async () => {
     await auth.signOut();
@@ -32,7 +32,6 @@ const Chats = () => {
       return;
     }
       axios.get("https://api.chatengine.io/users/me/",
-      // { withCredentials: true }, 
       {
         headers: {
           "project-id": "a5192c7b-a35c-402f-bf57-9194d999a193",
